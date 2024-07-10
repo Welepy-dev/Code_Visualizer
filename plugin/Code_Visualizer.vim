@@ -18,6 +18,12 @@ function! OpenHelloWorldWindow()
     setlocal bufhidden=wipe
     setlocal noswapfile
     setlocal readonly
+
+    " Move to window 2 (assuming you want to set window 2 to be non-modifiable)
+    2wincmd w
+    " Set the buffer in window 2 to be non-modifiable
+    setlocal nomodifiable
+
 endfunction
 
 command! HelloWorld call OpenHelloWorldWindow()
