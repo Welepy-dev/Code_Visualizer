@@ -1,5 +1,7 @@
 function! OpenWindow()
     " Execute the compiled C program
+    vsplit
+    wincmd l
     execute 'silent !./TUI'
     redraw!
 endfunction
