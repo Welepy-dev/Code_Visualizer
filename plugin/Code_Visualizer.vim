@@ -1,6 +1,6 @@
 function! OpenWindow()
     " Execute the compiled C program
-    execute 'silent !./vim_plugin'
+    execute 'silent !./TUI'
     redraw!
 endfunction
 
