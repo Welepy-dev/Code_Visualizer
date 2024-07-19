@@ -4,7 +4,7 @@ function! SetupDebugLayout()
     only
 
     " Split windows to create the layout
-    vsplit | wincmd l | split | wincmd j | split | wincmd k
+    vsplit | wincmd l
     " Resize windows as needed
     vert resize 30  " Adjust the width of the right panels
 
