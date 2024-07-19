@@ -6,6 +6,8 @@ endif
 "vsplit | wincmd l
 
 function! StartSpinningDonut()
+	
+vsplit | wincmd l
   python3 << EOF
 import vim
 import curses
