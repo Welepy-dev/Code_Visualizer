@@ -1,4 +1,6 @@
 function! OpenWindow()
+    vsplit | wincmd l
+    setlocal nomodifiable
     " Execute the compiled C program
     execute 'silent !./TUI'
     redraw!
