@@ -1,72 +1,60 @@
-if !has("python3")
-  echo "Error: Python3 is required for this plugin."
-  finish
-endif
+" Function to set up the layout
+function! SetupDebugLayout()
+    " Close all existing windows
+    only
 
-"vsplit | wincmd l
+    " Split windows to create the layout
+    vsplit | wincmd l | split | wincmd j | split | wincmd k
+    " Resize windows as needed
+    vert resize 30  " Adjust the width of the right panels
 
-function! StartSpinningDonut()
-	
-vsplit | wincmd l
-  python3 << EOF
-import vim
-import curses
-import time
-import math
+    " Open the main code display panel in the left window
+    enew
+    setlocal buftype=nofile
+    setlocal bufhidden=hide
+    call setline(1, 'Code Display Panel')
 
-def draw_donut(stdscr):
-    stdscr.nodelay(1)
-    curses.curs_set(0)
-    sh, sw = stdscr.getmaxyx()
-    w = curses.newwin(sh, sw, 0, 0)
+    " Switch to the top right window and set up the execution control panel
+    wincmd l
+    enew
+    setlocal buftype=nofile
+    setlocal bufhidden=hide
+    call setline(1, 'Execution Control Panel')
+    call setline(2, '[Step Over] [Step In] [Step Out] [Continue] [Pause] [Stop]')
 
-    A = 10
-    B = 10
-    R1 = 1
-    R2 = 2
-    K2 = 5
-    K1 = sh * K2 * 3 / (8 * (R1 + R2))
-    
-    while True:
-        w.clear()
-        z = [0] * 1760
-        b = [' '] * 1760
-        for j in range(0, 628, 7):
-            for i in range(0, 628, 2):
-                c = math.sin(i)
-                d = math.cos(j)
-                e = math.sin(A)
-                f = math.sin(j)
-                g = math.cos(A)
-                h = d + R2
-                D = 1 / (c * h * e + f * g + K2)
-                l = math.cos(i)
-                m = math.cos(B)
-                n = math.sin(B)
-                t = c * h * g - f * e
-                x = int(40 + 30 * D * (l * h * m - t * n))
-                y = int(12 + 15 * D * (l * h * n + t * m))
-                o = int(x + 80 * y)
-                N = int(8 * ((f * e - c * d * g) * m - c * d * e - f * g - l * d * n))
-                if 0 <= y < 22 and 0 <= x < 80 and D > z[o]:
-                    z[o] = D
-                    b[o] = '.,-~:;=!*#$@'[N if N > 0 else 0]
+    " Switch to the middle right window and set up the variable watch panel
+    wincmd j
+    enew
+    setlocal buftype=nofile
+    setlocal bufhidden=hide
+    call setline(1, 'Variable Watch Panel')
+    call setline(2, 'var1: value')
+    call setline(3, 'var2: value')
 
-        for k in range(1760):
-            w.addch(k // 80, k % 80, b[k])
+    " Switch to the bottom right window and set up the output/console panel
+    wincmd j
+    enew
+    setlocal buftype=nofile
+    setlocal bufhidden=hide
+    call setline(1, 'Output/Console Panel')
+    call setline(2, 'Output here')
 
-        w.refresh()
-        A += 0.04
-        B += 0.02
-        time.sleep(0.03)
+    " Switch to the top right window and set up the call stack panel
+    wincmd k
+    enew
+    setlocal buftype=nofile
+    setlocal bufhidden=hide
+    call setline(1, 'Call Stack Panel')
+    call setline(2, 'function1')
+    call setline(3, 'function2')
 
-def main():
-    curses.wrapper(draw_donut)
-
-if __name__ == "__main__":
-    main()
-EOF
+    " Set up the status bar
+    wincmd j
+    enew
+    setlocal buftype=nofile
+    setlocal bufhidden=hide
+    call setline(1, 'Status Bar: File: main.c | Line: 5 | Status: Paused')
 endfunction
 
-command! SpinningDonut call StartSpinningDonut()
-
+" Bind the setup function to a command
+command! SetupDebugLayout call SetupDebugLayout()
