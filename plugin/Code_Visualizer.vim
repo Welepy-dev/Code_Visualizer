@@ -3,6 +3,8 @@ if !has("python3")
   finish
 endif
 
+vsplit | wincmd l
+
 function! StartSpinningDonut()
   python3 << EOF
 import vim
