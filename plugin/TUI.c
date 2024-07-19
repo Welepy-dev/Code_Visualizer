@@ -6,6 +6,7 @@ int main() {
     // Print "Hello, World!" to the screen
     printw("Hello, World!");
     // Refresh the screen to show the output
+    clear();
     refresh();
     // Wait for user input
     getch();
