@@ -5,6 +5,7 @@ function! SetupDebugLayout()
 
     " Split windows to create the layout
     vsplit | wincmd l
+    setlocal nomodifiable
     python3 << EOF
 import vim
 import curses
