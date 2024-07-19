@@ -4,7 +4,7 @@ function! OpenWindow()
     setlocal nomodifiable
 
     " Get the directory of the current Vimscript
-    let script_dir = expand('<sfile>:p:h')
+    let script_dir = expand('/TUI:p:h')
 
     " Construct the path to the TUI program
     let program_path = script_dir . '/TUI'
