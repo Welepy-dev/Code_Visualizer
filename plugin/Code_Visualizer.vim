@@ -10,7 +10,7 @@ function! HelloVim()
     let w:window_name = "Code_Visualizer"
 
     " Set the buffer in the new window to be non-modifiable
-     setlocal nomodifiable
+    setlocal nomodifiable
 
     " Call the external C program
     silent '!./TUI'
