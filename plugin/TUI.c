@@ -4,10 +4,8 @@ int main() {
     // Initialize the ncurses library
     initscr();
     // Print "Hello, World!" to the screen
-    printw("Hello, World!");
+    addstr("Hello, World!");
     // Refresh the screen to show the output
-    clear();
-    refresh();
     // Wait for user input
     getch();
     // End ncurses mode

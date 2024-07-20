@@ -3,6 +3,9 @@ function! HelloVim()
     " Open a new vertical split window
     vsplit
 
+    " Create a new empty buffer in the new split window
+    enew
+
     " Set the window name to "Code_Visualizer"
     let w:window_name = "Code_Visualizer"
 
