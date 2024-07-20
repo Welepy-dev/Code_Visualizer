@@ -13,7 +13,7 @@ function! HelloVim()
     setlocal nomodifiable
 
     " Call the external C program
-    execute '!./TUI'
+    silent '!./TUI'
 endfunction
 
 " Create a Vim command to run the function
