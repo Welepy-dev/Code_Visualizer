@@ -3,7 +3,7 @@ function! HelloVim()
     "vsplit | enew
     
     " Create a new terminal buffer in the new split window and run the TUI program
-    vsplit | enew | terminal ./TUI | wincmd J | quit
+    vsplit | enew | vert terminal ./TUI
     
     " Goes to the window below and closes it
     "wincmd J | quit
