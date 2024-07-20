@@ -1,6 +1,6 @@
 function! HelloVim()
     " Open a new vertical split window
-    vsplit | enew | quit
+    vsplit | enew
     " Create a new terminal buffer in the new split window and run the TUI program
     terminal ./TUI
 
