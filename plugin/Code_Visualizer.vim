@@ -6,7 +6,7 @@ function! HelloVim()
     terminal ./TUI
     
     " Goes to the window below and closes it
-    wincmd J | quit
+    wincmd J | quit!
 
     " Set the window name to "Code_Visualizer"
     let w:window_name = "Code_Visualizer"
